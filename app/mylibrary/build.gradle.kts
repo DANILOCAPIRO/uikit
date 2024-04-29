@@ -1,5 +1,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
+    // maven plugin is required to publish the library
+    id("maven-publish")
+
 }
 
 android {
@@ -12,6 +15,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+    // release components configuration
+
 
     buildTypes {
         release {
@@ -25,6 +30,13 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 }
 
@@ -45,4 +57,20 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
+}
+
+// This is required to publish the library
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("ReleaseAar") {
+                groupId = "com.capiro.mylibrary"
+                artifactId = "lib-git-repository"
+                version = "1.0.0"
+                afterEvaluate {
+                    artifact(tasks.getByName("bundleReleaseAar"))
+                }
+            }
+        }
+    }
 }
