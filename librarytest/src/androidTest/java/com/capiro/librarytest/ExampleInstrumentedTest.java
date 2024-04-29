@@ -1,4 +1,4 @@
-package com.capiro.mylibrary;
+package com.capiro.librarytest;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.capiro.mylibrary.test", appContext.getPackageName());
+        assertEquals("com.capiro.librarytest.test", appContext.getPackageName());
     }
 }

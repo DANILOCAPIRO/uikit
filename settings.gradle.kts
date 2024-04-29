@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "uikit"
 include(":app")
 include(":app:mylibrary")
+include(":librarytest")

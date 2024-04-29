@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
-    // maven plugin is required to publish the library
     id("maven-publish")
-
 }
 
 android {
-    namespace = "com.capiro.mylibrary"
+    namespace = "com.capiro.librarytest"
     compileSdk = 34
 
     defaultConfig {
@@ -15,8 +13,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
-    // release components configuration
-
 
     buildTypes {
         release {
@@ -64,7 +60,7 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("ReleaseAar") {
-                groupId = "com.capiro.mylibrary"
+                groupId = "com.capiro.librarytest"
                 artifactId = "lib-git-repository"
                 version = "1.0.0"
                 afterEvaluate {
@@ -74,3 +70,4 @@ afterEvaluate {
         }
     }
 }
+// This is required to publish the library

@@ -1,4 +1,4 @@
-package com.capiro.mylibrary;
+package com.capiro.librarytest;
 
 import org.junit.Test;
 
